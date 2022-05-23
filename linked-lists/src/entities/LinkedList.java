@@ -40,8 +40,6 @@ public class LinkedList {
 			insertAtStart(node.getData());
 		} else {
 
-			// criar count para limitar até onde o for vai rodar
-
 			if (head != null && index > 0 && index <= nOfElements) {
 				Node n = head;
 				for (int i = 0; i < index - 1; i++) {
@@ -65,12 +63,13 @@ public class LinkedList {
 
 	public void deleteAt(Integer index, Scanner sc) {
 
-		if (head == null) {
+		Integer nOfElements = countElements();
+
+		if (index < 0 || index > nOfElements || head == null) {
 			System.out.println("This index doesn't exist in the list!");
-			sc.nextLine();
 		} else if (index == 0 && head != null) {
 			head = head.getNext();
-		} else if (index != 0) {
+		} else if (index > 0 && index <= nOfElements) {
 			Node n = head;
 			Node deletedN = head;
 			for (int i = 0; i < index - 1; i++) {
@@ -80,10 +79,11 @@ public class LinkedList {
 			if (n.getNext() != null) {
 				deletedN = n.getNext();
 				n.setNext(deletedN.getNext());
-				System.out.println("Delete value: " + deletedN.getData());
+				System.out.println("Deleted value: " + deletedN.getData());
 				deletedN = null;
 			} else {
-				System.out.println("There's no node to be delete at chosen index!");
+				System.out.println("There's no node to be delete at the chosen index!");
+				sc.nextLine();
 			}
 		}
 	}

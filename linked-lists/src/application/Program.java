@@ -62,6 +62,7 @@ public class Program {
 			case 5:
 				System.out.print("What is the index you wish to delete? ");
 				index = sc.nextInt();
+				sc.nextLine();
 				list.deleteAt(index, sc);
 				index = null;
 				sc.nextLine();
